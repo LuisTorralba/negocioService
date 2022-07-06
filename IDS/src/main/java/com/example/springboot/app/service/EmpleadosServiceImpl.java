@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.app.exception.ResourceNotFoundException;
+//import com.example.springboot.app.exception.ResourceNotFoundException;
 import com.example.springboot.app.model.Empleados;
 import com.example.springboot.app.repository.EmpleadosRepository;
 
@@ -34,7 +34,7 @@ public class EmpleadosServiceImpl implements EmpleadoService{
 			empleadosRepository.save(empleadosUpdate);
 			return empleadosUpdate;
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + empleados.getId());
+			throw new RuntimeException("Record not found with id:" + empleados.getId());
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class EmpleadosServiceImpl implements EmpleadoService{
 		if(empleadosDb.isPresent()) {
 			return empleadosDb.get();
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + empleadosId);
+			throw new RuntimeException("Record not found with id:" + empleadosId);
 		}
 		
 	}
@@ -60,7 +60,7 @@ public class EmpleadosServiceImpl implements EmpleadoService{
 		if(empleadosDb.isPresent()) {
 			this.empleadosRepository.delete(empleadosDb.get());
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + empleadosId);
+			throw new RuntimeException("Record not found with id:" + empleadosId);
 		}
 		
 	}

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.app.exception.ResourceNotFoundException;
+//import com.example.springboot.app.exception.ResourceNotFoundException;
 import com.example.springboot.app.model.Country;
 import com.example.springboot.app.repository.CountryRepository;
 
@@ -35,7 +35,7 @@ public class CountryServiceImple implements CountryService {
 			countryRepository.save(countryUpdate);
 			return countryUpdate;
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + country.getId());
+			throw new RuntimeException("Record not found with id:" + country.getId());
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class CountryServiceImple implements CountryService {
 		if(countryDb.isPresent()) {
 			return countryDb.get();
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + countryId);
+			throw new RuntimeException("Record not found with id:" + countryId);
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class CountryServiceImple implements CountryService {
 		if(countryDb.isPresent()) {
 			this.countryRepository.delete(countryDb.get());
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + countryId);
+			throw new RuntimeException("Record not found with id:" + countryId);
 		}	
 	}
 	

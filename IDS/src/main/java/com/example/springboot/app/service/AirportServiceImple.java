@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.app.exception.ResourceNotFoundException;
+//import com.example.springboot.app.exception.ResourceNotFoundException;
 import com.example.springboot.app.model.Airport;
 import com.example.springboot.app.repository.AirportRepository;
 
@@ -32,7 +32,7 @@ public class AirportServiceImple implements AirportService {
 			airportRepository.save(airportUpdate);
 			return airportUpdate;
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + airport.getId());
+			throw new RuntimeException("Record not found with id:" + airport.getId());
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class AirportServiceImple implements AirportService {
 		if (airportDb.isPresent()) {
 			return airportDb.get();
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + airportId);
+			throw new RuntimeException("Record not found with id:" + airportId);
 		}
 	}
 	@Override
@@ -58,7 +58,7 @@ public class AirportServiceImple implements AirportService {
 		if (airportDb.isPresent()) {
 			this.airportRepository.delete(airportDb.get());
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + airportId);
+			throw new RuntimeException("Record not found with id:" + airportId);
 		}
 	}
 	

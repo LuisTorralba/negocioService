@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springboot.app.exception.Mensaje;
+//import com.example.springboot.app.exception.Mensaje;
 import com.example.springboot.app.model.Empleados;
 
 import com.example.springboot.app.service.EmpleadoService;
@@ -34,7 +34,7 @@ public class EmpleadosController {
 	public ResponseEntity<?> getAllEmpleados() {
 		List<Empleados> lista = service.getAllEmpleados();
 		if(lista.isEmpty()){
-			return new ResponseEntity<>(new Mensaje("Sin empleados en la Base de Datos"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Sin datos.", HttpStatus.BAD_REQUEST);
 		}
 		return ResponseEntity.ok().body(service.getAllEmpleados());
 	}

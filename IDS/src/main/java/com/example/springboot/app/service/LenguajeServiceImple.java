@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.app.exception.ResourceNotFoundException;
+//import com.example.springboot.app.exception.ResourceNotFoundException;
 import com.example.springboot.app.model.Lenguaje;
 import com.example.springboot.app.repository.LenguajeRepository;
 
@@ -34,7 +34,7 @@ public class LenguajeServiceImple implements LenguajeService {
 			lenguajeRepository.save(lenguajeUpdate);
 			return lenguajeUpdate;
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + lenguaje.getId());
+			throw new RuntimeException("Record not found with id:" + lenguaje.getId());
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class LenguajeServiceImple implements LenguajeService {
 		if (lenguajeDb.isPresent()) {
 			return lenguajeDb.get();
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + lenguajeId);
+			throw new RuntimeException("Record not found with id:" + lenguajeId);
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class LenguajeServiceImple implements LenguajeService {
 		if (lenguajeDb.isPresent()) {
 			this.lenguajeRepository.delete(lenguajeDb.get());
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + lenguajeId);
+			throw new RuntimeException("Record not found with id:" + lenguajeId);
 		}
 	}
 
