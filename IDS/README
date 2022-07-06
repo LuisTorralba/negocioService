@@ -1,0 +1,9 @@
+Hola bienvenido a la aplicación orientada a empleados
+
+1- Porfavor, solo descargue y exporte la app a su repositorio local con su IDE preferido
+
+2- Estando en su IDE ahora vaya a la parte de src/main/java/com.example.springboot.app
+   y ejecute el programa IDSApplication.java
+   
+3- Dirijase a Postman y manipule desde ahi con los endpoints dados
+
